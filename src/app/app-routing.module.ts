@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [
-  { path: 'TF145-DND', component: MainPageComponent, pathMatch: 'full' },
+  { path: '', component: MainPageComponent, pathMatch: 'full' },
+  { path: 'TF145-DND', component: MainPageComponent},
 ];
 
 @NgModule({

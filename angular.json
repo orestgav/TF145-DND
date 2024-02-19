@@ -72,12 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tfdnd:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "tfdnd:build:production"
             },
             "development": {
-              "browserTarget": "tfdnd:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "tfdnd:build:development"
             }
           },
           "defaultConfiguration": "development"
