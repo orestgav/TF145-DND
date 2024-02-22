@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$tfdnd-primary: mat.define-palette(mat.$indigo-palette);
+$tfdnd-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tfdnd-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$tfdnd-theme: mat.define-light-theme((
+  color: (
+    primary: $tfdnd-primary,
+    accent: $tfdnd-accent,
+    warn: $tfdnd-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($tfdnd-theme);
+
+html, body { 
+  height: 100%; 
+  background-color: #f2f2f2; 
+  font-size: 14px
+}
+
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: overlay; 
+  overflow-x: hidden;
+}
+
+.hide {
+  display: none !important;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-space {
+  @extend .flex-row;
+  justify-content: space-between;
+  width: 100%
+}
+
+.flex-col-space {
+  @extend .flex-col;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.flex-row-start {
+  display: flex;
+  justify-content: stretch;
+  align-items: flex-start;
+  width: 100%
+}
+
+.flex-col-start {
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: flex-start;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

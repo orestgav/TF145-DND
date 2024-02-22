@@ -1,0 +1,114 @@
+<div class="flex-col container" *ngIf="loaded">
+  <div class="flex-row-start header">
+    <img class="ava" [src]="char.decorations.avatarUrl">
+    <div class="flex-row-space">
+      <b class="name">{{char.name}}</b>
+      <div class="flex-row">
+        <img class="coin" src="https://ultrapro.com/cdn/shop/products/18995_Poly_WaterdeepCoin_D_D_goldback_1024x.png?v=1687542854">
+        <b>{{money()}}</b>
+      </div>
+    </div>
+  </div>
+ 
+
+  <mat-progress-bar class="hp" mode="determinate" [value]="valHP()"></mat-progress-bar> 
+  <b class="hp-text">{{curHP() + ' / ' + maxHP()}}</b>
+
+
+  <div class="flex-row-space inventory-header">
+    <b>Total Inventory</b>
+    <div class="flex-row weight">
+      <b class="s1">{{''}}</b>
+      <b class="s2">{{(allWeight(equipment) + allWeight(backpack)) + 'lb'}}</b>
+      <b class="s3">{{toKg(allWeight(equipment) + allWeight(backpack)) + 'kg'}}</b>
+    </div>
+  </div>
+
+  <div class="flex-row-space inventory-header">
+    <b>Equipment</b>
+    <div class="flex-row weight">
+      <b class="s1">{{''}}</b>
+      <b class="s2">{{allWeight(equipment) + 'lb'}}</b>
+      <b class="s3">{{toKg(allWeight(equipment)) + 'kg'}}</b>
+    </div>
+  </div>
+
+  <div class="flex-col-start inventory-list">
+    <div class="flex-row-space item" *ngFor="let item of equipment">
+      <span>{{item.definition.name}}</span>
+      <div class="flex-row weight">
+        <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
+        <span class="s2">{{item.definition.weight * item.quantity}}</span>
+        <span class="s3">{{roundOne(toKg(item.definition.weight * item.quantity))}}</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="flex-row-space inventory-header" *ngIf="bag.length > 0">
+    <b>Bag of Holding</b>
+    <div class="flex-row weight">
+      <b class="s1">{{''}}</b>
+      <b class="s2">{{allWeight(bag) + 'lb'}}</b>
+      <b class="s3">{{toKg(allWeight(bag)) + 'kg'}}</b>
+    </div>
+  </div>
+
+  <div class="flex-col-start inventory-list">
+    <div class="flex-row-space item" *ngFor="let item of bag">
+      <span>{{item.definition.name}}</span>
+      <div class="flex-row weight">
+        <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
+        <span class="s2">{{item.definition.weight * item.quantity}}</span>
+        <span class="s3">{{roundOne(toKg(item.definition.weight * item.quantity))}}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="flex-row-space inventory-header"  *ngIf="backpack.length > 0">
+    <b>Backpack</b>
+    <div class="flex-row weight">
+      <b class="s1">{{''}}</b>
+      <b class="s2">{{allWeight(backpack) + 'lb'}}</b>
+      <b class="s3">{{toKg(allWeight(backpack)) + 'kg'}}</b>
+    </div>
+  </div>
+
+  <div class="flex-col-start inventory-list">
+    <div class="flex-row-space item" *ngFor="let item of backpack">
+      <span>{{item.definition.name}}</span>
+      <div class="flex-row weight">
+        <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
+        <span class="s2">{{item.definition.weight * item.quantity}}</span>
+        <span class="s3">{{roundOne(toKg(item.definition.weight * item.quantity))}}</span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="flex-row-space inventory-header" *ngIf="chest.length > 0">
+    <b>Chest</b>
+    <div class="flex-row weight">
+      <b class="s1">{{''}}</b>
+      <b class="s2">{{allWeight(chest) + 'lb'}}</b>
+      <b class="s3">{{toKg(allWeight(chest)) + 'kg'}}</b>
+    </div>
+  </div>
+
+  <div class="flex-col-start inventory-list">
+    <div class="flex-row-space item" *ngFor="let item of chest">
+      <span>{{item.definition.name}}</span>
+      <div class="flex-row weight">
+        <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
+        <span class="s2">{{item.definition.weight * item.quantity}}</span>
+        <span class="s3">{{roundOne(toKg(item.definition.weight * item.quantity))}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

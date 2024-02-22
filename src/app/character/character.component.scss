@@ -1,0 +1,59 @@
+.container {
+  margin: 8px 4px;
+  padding: 8px;
+  background-color: white;
+  border-radius: 8px;
+
+  .header {
+    align-items: center;
+
+    .name {
+     margin-left: 16px;
+     font-size: 16px;
+    }
+  
+    .ava {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .coin {
+      margin-top: 1px;
+      width: 19px;
+      height: 19px;
+    }
+  }
+
+  .hp {
+    margin: 8px 0;
+    height: 20px;
+  }
+
+  .hp-text {
+    position: absolute;
+    top: 75px;
+    color: white;
+  }
+
+  .inventory-header {
+    margin: 8px 0;
+    font-size: 11px;
+  }
+
+  .inventory-list {
+    font-size: 11px;
+  }
+
+  .s1 {
+    width: 35px;
+  }
+
+  .s2 {
+    width: 35px;
+  }
+
+  .s3 {
+    width: 24px;
+  }
+}
