@@ -16,7 +16,7 @@
 
 
   <div class="flex-row-space inventory-header">
-    <b>Total Inventory</b>
+    <b>Max {{maxWeight()}}lb</b>
     <div class="flex-row weight">
       <b class="s1">{{''}}</b>
       <b class="s2">{{(allWeight(equipment) + allWeight(backpack)) + 'lb'}}</b>
@@ -35,7 +35,7 @@
 
   <div class="flex-col-start inventory-list">
     <div class="flex-row-space item" *ngFor="let item of equipment">
-      <span>{{item.definition.name}}</span>
+      <span [class.uncommon]="item.definition.rarity == 'Uncommon'" [class.rare]="item.definition.rarity == 'Rare'" [class.very-rare]="item.definition.rarity == 'Very Rare'">{{item.definition.name}}</span>
       <div class="flex-row weight">
         <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
         <span class="s2">{{item.definition.weight * item.quantity}}</span>
@@ -57,7 +57,7 @@
 
   <div class="flex-col-start inventory-list">
     <div class="flex-row-space item" *ngFor="let item of bag">
-      <span>{{item.definition.name}}</span>
+      <span [class.uncommon]="item.definition.rarity == 'Uncommon'" [class.rare]="item.definition.rarity == 'Rare'" [class.very-rare]="item.definition.rarity == 'Very Rare'">{{item.definition.name}}</span>
       <div class="flex-row weight">
         <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
         <span class="s2">{{item.definition.weight * item.quantity}}</span>
@@ -78,7 +78,7 @@
 
   <div class="flex-col-start inventory-list">
     <div class="flex-row-space item" *ngFor="let item of backpack">
-      <span>{{item.definition.name}}</span>
+      <span [class.uncommon]="item.definition.rarity == 'Uncommon'" [class.rare]="item.definition.rarity == 'Rare'" [class.very-rare]="item.definition.rarity == 'Very Rare'">{{item.definition.name}}</span>
       <div class="flex-row weight">
         <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
         <span class="s2">{{item.definition.weight * item.quantity}}</span>
@@ -102,7 +102,7 @@
 
   <div class="flex-col-start inventory-list">
     <div class="flex-row-space item" *ngFor="let item of chest">
-      <span>{{item.definition.name}}</span>
+      <span [class.uncommon]="item.definition.rarity == 'Uncommon'" [class.rare]="item.definition.rarity == 'Rare'" [class.very-rare]="item.definition.rarity == 'Very Rare'">{{item.definition.name}}</span>
       <div class="flex-row weight">
         <span *ngIf="item.quantity > 1" class="s1">{{item.quantity > 1 ? 'x' + item.quantity : ''}}</span>
         <span class="s2">{{item.definition.weight * item.quantity}}</span>

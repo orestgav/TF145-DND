@@ -20,7 +20,6 @@ export class CharacterComponent implements OnInit {
   public roundOne(value: number): number {
     return Math.round(value * 10) / 10; 
   }
-
   public toKg(value: number): number {
     return Math.round(value * 0.45); 
   }
@@ -32,6 +31,10 @@ export class CharacterComponent implements OnInit {
   public money(): number {
 
     return Math.round(this.char.currencies.cp/100 + this.char.currencies.sp/10 + this.char.currencies.ep/2 + this.char.currencies.gp + this.char.currencies.pp*10);
+  }
+
+  public maxWeight(): number {
+    return this.char.stats[0].value * 15; 
   }
 
   public allWeight(items: any[]): number {
@@ -79,7 +82,7 @@ export class CharacterComponent implements OnInit {
       if (result.success) {
         this.char = result.data;
         console.log( this.char );
-
+        this.char.inventory = this.modifyItems(this.char.inventory)
 
 
         let equipmentId = this.char.id;
@@ -101,6 +104,17 @@ export class CharacterComponent implements OnInit {
         this.loaded = true;
       }
     });
+  }
+
+  public modifyItems(items: []): [] {
+    items.forEach((item: { definition: any; id: number;  }) => {
+      const custom =  this.char.characterValues.find((c: { typeId: number; valueId: number; }) => c.typeId == 8 && c.valueId == item.id)
+      if (custom) {
+        item.definition.name = custom.value;
+      }
+    });
+
+    return items;
   }
 
 }
