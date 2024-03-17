@@ -1,3 +1,10 @@
-<div class="flex-row main">
-  <app-character *ngFor="let char of chars" [id]="char"></app-character>
+<div class="flex-col-space">
+  <div class="flex-row main">
+    <app-character *ngFor="let char of chars" [id]="char" [name]="nameFromId(char)" (hideChar)="hide(char)" (moneyEarned)="money(char, $event)"></app-character>
+  </div>
+
+  <div class="flex-row-start">
+    <div class="flex-row hiden-block" ><b>{{sum()}}</b><img class="coin" src="https://ultrapro.com/cdn/shop/products/18995_Poly_WaterdeepCoin_D_D_goldback_1024x.png?v=1687542854"></div>
+    <div  class="hiden-block" *ngFor="let char of hiden" (dblclick)="unhide(char)"><b>{{nameFromId(char)}}</b></div>
+  </div>
 </div>

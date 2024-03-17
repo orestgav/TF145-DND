@@ -46,6 +46,21 @@ body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(#555555, 0.75);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar addresses  {
+  background-color: transparent;
+}
+
 .hide {
   display: none !important;
 }
@@ -90,5 +105,9 @@ body {
   width: 100%;
   align-items: flex-start;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.coin {
+  margin-top: 1px;
+  width: 19px;
+  height: 19px;
+}
